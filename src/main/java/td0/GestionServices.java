@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GestionServices {
     private final String name;
-    private ArrayList<ChargeEnseignement> chargeEnseignementList = new ArrayList<ChargeEnseignement>();;
+    private ArrayList<ChargeEnseignement> chargeEnseignementList = new ArrayList<>();
 
     public GestionServices(String name) {
         this.name = name;
