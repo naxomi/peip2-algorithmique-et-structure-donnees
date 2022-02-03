@@ -16,7 +16,7 @@ public class ServiceEnseignements {
         System.out.println(p);
         // test 4
         ChargeEnseignement m1 = new Moniteur(e1,56);
-        GestionServices g= new GestionServices("Polytech");
+        GestionServices g = new GestionServices("Polytech");
         g.add(p);
         g.add(m1);
         g.add(m2);
