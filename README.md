@@ -2,7 +2,7 @@
 
 ## Description
 
-> The goal of this class is to give you bases in algorithmic so that, on simple cases, you are capable of :
+> The goal of this course is to give you bases in algorithmic so that, on simple cases, you are capable of :
 > - **justifying the validity of an algorithm**, and to know how to test its implementation,
 > - **evaluating the complexity of the algorithm**, in order to implement an efficient program,
 > - **knowing the classical data structures** in order to choose the one which is adapted to the problem to be solved.
