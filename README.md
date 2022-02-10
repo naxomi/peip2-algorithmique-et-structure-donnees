@@ -13,6 +13,6 @@
 
 ## Lessons and exercises
 
-- [02/02/2022 - Quiz OOP](docs/01-quiz-OOP.pdf)
-- [02/02/2022 - Quiz algorithmic](docs/02-quiz-algorithmic.pdf)
-- [07/02/2022 - Lesson introduction](docs/03-lesson-introduction.pdf)
+- [02/02/2022 - Quiz OOP](resources/01-quiz-OOP.pdf)
+- [02/02/2022 - Quiz algorithmic](resources/02-quiz-algorithmic.pdf)
+- [07/02/2022 - Lesson introduction](resources/03-lesson-introduction.pdf)
