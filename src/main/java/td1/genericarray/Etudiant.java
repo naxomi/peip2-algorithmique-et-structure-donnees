@@ -1,7 +1,14 @@
-package td1genericarray;
+/*
+ * Copyright (c) 2022. Raphaël Anjou
+ * Parts of this code might have been written by "Polytech Nice Sophia", member of "Université Côte d'Azur",
+ * as content for their courses.
+ * Source files for the exercises can be found in the /resources directory.
+ */
+
+package td1.genericarray;
 
 /**
- * A {@code Etudiant} object represents a student,
+ * An {@code Etudiant} object represents a student,
  * with a name and a rank.
  */
 public class Etudiant {
@@ -37,13 +44,10 @@ public class Etudiant {
     /**
      * Format student description as following :
      * <i>Etudiant{name='{@code name}', rank = {@code rank}}</i>
-     * @return student details
+     * @return student details formatted as a {@code String}
      */
     @Override
     public String toString() {
-        return "Etudiant{" +
-                "name='" + name + "'" +
-                ", rank = " + rank +
-                '}';
+        return String.format("Etudiant{name = '%s', rank = %s}", name, rank);
     }
 }

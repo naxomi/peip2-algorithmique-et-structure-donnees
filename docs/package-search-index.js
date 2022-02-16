@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"td1genericarray"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"td0"},{"l":"td1.genericarray"},{"l":"td1.spellchecker"}]

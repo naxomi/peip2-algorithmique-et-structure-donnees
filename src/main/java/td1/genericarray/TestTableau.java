@@ -1,4 +1,11 @@
-package td1genericarray;
+/*
+ * Copyright (c) 2022. Raphaël Anjou
+ * Parts of this code might have been written by "Polytech Nice Sophia", member of "Université Côte d'Azur",
+ * as content for their courses.
+ * Source files for the exercises can be found in the /resources directory.
+ */
+
+package td1.genericarray;
 
 public class TestTableau {
 
@@ -38,6 +45,9 @@ public class TestTableau {
         System.out.println(t2.binarySearch(8));
         System.out.println(t2.binarySearch(1));
         System.out.println(t2.binarySearch(14));
+
+        Etudiant student = new Etudiant("Raphaël", 19);
+        System.out.print(student);
 
     }
 }

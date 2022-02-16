@@ -1,57 +1,48 @@
-package td1spellchecker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-
-import td1genericarray.*;
 
 /**
  * Un correcteur orthographique
  */
 public class CorrecteurOrthographique {
     // lettres de l'alphabet (utile pour les corrections avec ajout de lettre)
-    private static final char[] ALPHABET = new char[]{'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
-    // Generic array generated from the table
-    TableauGenerique<String> dictionaryTable;
+    private static char[] ALPHABET = new char[]{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    // le tableau générique créé à partir du dictionnaire
+    TableauGenerique tableauDico;
 
     /* construit un correcteur orthographique à partir d'un fichier dictionnaire
     (via un LecteurDico)
      */
-    public CorrecteurOrthographique(String filePath) {
-        dictionaryReader ld = new dictionaryReader(filePath);
-        String[] dictionary = ld.getDico();
-        this.dictionaryTable = new TableauGenerique<>(dictionary);
+    public CorrecteurOrthographique(String fileName)  {
+        LecteurDico ld = new LecteurDico(fileName);
+        String[] dico = ld.getDico();
+        this.tableauDico = new TableauGenerique(dico);
     }
 
-    /**
-     * vrai si le mot existe dans le dictionnaire
+    /** vrai si le mot existe dans le dictionnaire
      * on comparera les performances quand on utilise rechercheVite ou recherche
      */
-    boolean wordIsCorrect(String word) {
-        // return dictionaryTable.linearSearch(word) != -1;
-        return dictionaryTable.binarySearch(word) != -1;
+     boolean estCorrect(String mot) {
+//        return tableauDico.rechercheVite(mot)!=-1;
+        return tableauDico.recherche(mot)!=-1;
 
     }
 
-    // Return number of correct words in the array
-    // Display the time necessary to count the correct words
-    private int countCorrectWords(String[] word_array) {
-        int counter = 0;
+    // renvoie le nombre de mots corrects dans le tableaux mots
+    // affiche le temps nécessaire
+     private int compteCorrect(String[] mots){
         long t1 = System.currentTimeMillis();
-        for (String word : word_array) {
-            if (wordIsCorrect(word)) {
-                counter++;
-            }
-        }
+        // à compléter
         long t2 = System.currentTimeMillis();
-        System.out.println("Time to count all correct words :" + (t2 - t1) + "ms");
-        return counter;
+        System.out.println("temps pour compter les mots corrects :" + (t2-t1) + "ms");
+        return 0;
     }
 
     // pour découper les mots d'une phrase et les mettre dans un tableau
-    private String[] sentenceToTable(String phrase) {
-        // on découpe en fonction de la ponctuation et de " "
+    private String[] phraseToTableau(String phrase) {
+    // on découpe en fonction de la ponctuation et de " "
         StringTokenizer st = new StringTokenizer(phrase, " ,;:!.");
         String[] lesMots = new String[st.countTokens()];
         int i = 0;
@@ -63,13 +54,13 @@ public class CorrecteurOrthographique {
     }
 
     // méthode publique pour compter le nombre de mots corrects dans une phrase
-    public int countCorrectWords(String sentence) {
-        return countCorrectWords(sentenceToTable(sentence));
+    public int compteCorrect(String phrase){
+        return compteCorrect(phraseToTableau(phrase) );
     }
 
     // renvoie toutes les corrections possibles pour un mot
-    public ArrayList<String> corrections(String m) {
-        ArrayList<String> res = new ArrayList<>();
+     public ArrayList<String> corrections(String m) {
+        ArrayList res = new ArrayList();
         // addAll ajoute tous les éléments d'une ArrayList dans une autre
         res.addAll(corrigeEnleve(m));
         res.addAll(corrigeChange(m));
@@ -79,10 +70,10 @@ public class CorrecteurOrthographique {
     }
 
     // affiche que le mot est correct et sinon, affiche toutes les corrections possibles
-    public void displayCorrections(String phrase) {
-        String[] lesMots = sentenceToTable(phrase);
+    public void afficheCorrections(String phrase) {
+        String[] lesMots =  phraseToTableau(phrase);
         for (String m : lesMots) {
-            if (wordIsCorrect(m))
+            if (estCorrect(m))
                 System.out.println(m + " ok");
             else {
                 System.out.println("corrections possibles pour " + m + ":" + corrections(m));
@@ -91,15 +82,9 @@ public class CorrecteurOrthographique {
     }
 
     // renvoie les corrections d'un mot en essayant de supprimer une de ses lettres
-    ArrayList<String> corrigeEnleve(String word) {
-        ArrayList<String> res = new ArrayList<String>();
-
-        for (int i = 0; i < word.length(); i++) {
-            String newWord = word.substring(0, i) + word.substring(i + 1);
-            if (!res.contains(newWord) && wordIsCorrect(newWord)) {
-                res.add(newWord);
-            }
-        }
+    ArrayList<String> corrigeEnleve(String mot) {
+        ArrayList res = new ArrayList();
+        // à compléter
         // essayer d'enlever 1 lettre du mot et voir si le mot existe dans le dictionnaire
         // quand on a trouvé une correction, on l'ajoute dans res avec res.add
         return res;
@@ -107,23 +92,23 @@ public class CorrecteurOrthographique {
 
     // renvoie les corrections d'un mot en essayant de remplacer une de ses lettres
     // par une des lettres de l'alphabet
-    ArrayList<String> corrigeChange(String mot) {
-        ArrayList<String> res = new ArrayList<>();
-        // à compléter
+     ArrayList<String> corrigeChange(String mot) {
+        ArrayList res = new ArrayList();
+                // à compléter
         return res;
     }
 
     // renvoie les corrections d'un mot en essayant d'ajouter une des lettres de l'alphabet
     // à n'importe quelle position
-    ArrayList<String> corrigeAjoute(String mot) {
-        ArrayList<String> res = new ArrayList<String>();
+     ArrayList<String> corrigeAjoute(String mot) {
+        ArrayList res = new ArrayList();
         // à compléter
         return res;
     }
 
     // renvoie les corrections d'un mot en essayant de permuter 2 lettres voisines
-    ArrayList<String> corrigePermute(String mot) {
-        ArrayList<String> res = new ArrayList<>();
+     ArrayList<String> corrigePermute(String mot) {
+        ArrayList res = new ArrayList();
         // à compléter
         return res;
     }

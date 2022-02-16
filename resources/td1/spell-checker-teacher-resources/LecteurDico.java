@@ -1,5 +1,3 @@
-package td1spellchecker;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,14 +5,14 @@ import java.util.Scanner;
 /**
  * classe pour lire un dictionnaire dans un fichier de texte et le stocker dans un tableau
  */
-public class dictionaryReader {
+public class LecteurDico {
     // le chemin vers le fichier
     private String fileName;
 
      // la liste des mots du dico
     ArrayList<String> lesMots;
 
-    public dictionaryReader(String fileName) {
+    public LecteurDico(String fileName) {
         this.fileName =fileName;
         initDico();
     }
@@ -57,7 +55,7 @@ public class dictionaryReader {
     ////////////////////////////////////////////////
     // un exemple d'utilisation
     public static void main(String[] s ){
-             dictionaryReader ld = new dictionaryReader("/home/helen/enseignement/peip2Algo/tds/tableaux/wordsAlpha.txt");
+             LecteurDico ld = new LecteurDico("/home/helen/enseignement/peip2Algo/tds/tableaux/wordsAlpha.txt");
             // ld.getDico() renvoie un String[] dont le 5ème élément est aaru
             System.out.println(ld.getDico()[25]);
     }
