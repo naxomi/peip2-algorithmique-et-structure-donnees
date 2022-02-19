@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="peip2-algorithmique-et-structure-donnees" />
+        <module name="peip2-algorithmique-et-structure-donnes" />
       </profile>
     </annotationProcessing>
   </component>

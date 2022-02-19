@@ -11,7 +11,7 @@ public class TestCorrecteur {
 
     public static void main(String[] s) {
         // créer le correcteur
-        SpellChecker co = new SpellChecker("./resources/td1/dictionary.txt", "linear");
+        SpellChecker co = new SpellChecker(Constants.PATH_TO_DICTIONARY, "linear");
 
         String word = "hello";
 

@@ -18,8 +18,7 @@ import td1.genericarray.*;
  * A spell checker
  */
 public class SpellChecker {
-    // Letters used to clean words when needed
-    private static final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz".toCharArray();
+
     // Generic array generated from the table
     private final TableauGenerique<String> dictionaryTable;
     private final String searchAlgorithm;
@@ -127,7 +126,7 @@ public class SpellChecker {
 
     // renvoie les corrections d'un mot en essayant de supprimer une de ses lettres
     ArrayList<String> correctByRemoving(String word) {
-        ArrayList<String> possibleCorrections = new ArrayList<String>();
+        ArrayList<String> possibleCorrections = new ArrayList<>();
 
         for (int i = 0; i < word.length(); i++) {
             String newWord = word.substring(0, i) + word.substring(i + 1);
@@ -148,7 +147,7 @@ public class SpellChecker {
         for (int i = 0; i < word.length(); i++) {
             char[] newWordArray = word.toCharArray();
 
-            for (char letter : ALPHABET) {
+            for (char letter : Constants.ALPHABET) {
                 newWordArray[i] = letter;
                 String newWord = new String(newWordArray);
 
@@ -164,10 +163,10 @@ public class SpellChecker {
     // renvoie les corrections d'un mot en essayant d'ajouter une des lettres de l'alphabet
     // à n'importe quelle position
     ArrayList<String> correctByAdding(String word) {
-        ArrayList<String> possibleCorrections = new ArrayList<String>();
+        ArrayList<String> possibleCorrections = new ArrayList<>();
 
         for (int i = 0; i < word.length(); i++) {
-            for (char letter : ALPHABET) {
+            for (char letter : Constants.ALPHABET) {
                 String newWord = word.substring(0, i) + letter + word.substring(i);
                 if (!possibleCorrections.contains(newWord) && wordIsCorrect(newWord)) {
                     possibleCorrections.add(newWord);
@@ -179,7 +178,7 @@ public class SpellChecker {
 
     // renvoie les corrections d'un mot en essayant de permuter 2 lettres voisines
     ArrayList<String> correctBySwapping(String word) {
-        ArrayList<String> possibleCorrections = new ArrayList<String>();
+        ArrayList<String> possibleCorrections = new ArrayList<>();
 
         for (int i = 0; i < word.length() - 1; i++) {
             char[] newWordArray = word.toCharArray();

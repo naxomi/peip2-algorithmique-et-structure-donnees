@@ -20,7 +20,7 @@ public class Moniteur extends ChargeEnseignement {
     }
 
     public Integer getHoursQuota() {
-        return 64;
+        return Constants.MONITEUR_HOURS_QUOTA;
     }
 
     @Override

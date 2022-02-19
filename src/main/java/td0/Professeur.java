@@ -32,7 +32,7 @@ public class Professeur extends ChargeEnseignement {
     }
 
     public Integer getHoursQuota() {
-        return 192;
+        return Constants.PROFESSEUR_HOURS_QUOTA;
     }
 
     @Override

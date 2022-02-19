@@ -45,7 +45,6 @@ public class TableauGenerique<K extends Comparable<K>> {
             if (item_to_search.compareTo(array[i]) == 0) {
                 return i;
             }
-        ;
         return -1;
     }
 
@@ -91,8 +90,8 @@ public class TableauGenerique<K extends Comparable<K>> {
 ////// Pour le TD récursivité
 
 
-    /** pour rechercher l'indice d'un élément
-     * version recursive
+    /* pour rechercher l'indice d'un élément
+      version recursive
      */
 /*
     public int rechercheViteRecursif(K x) {
@@ -100,7 +99,7 @@ public class TableauGenerique<K extends Comparable<K>> {
     }
 */
 
-    /** methode privee appelee par rechercheVite(K x)
+    /* methode privee appelee par rechercheVite(K x)
      */
 /*    private int rechercheViteRecursif(K x,int gauche, int droite ) {
         // A COMPLETER

@@ -37,7 +37,7 @@ public class DictionaryReader {
     }
 
     private void initializeDictionary() {
-        dictionary = new ArrayList<String>();
+        dictionary = new ArrayList<>();
         Scanner scanner = null;
 		// Try to open the file
         try {
