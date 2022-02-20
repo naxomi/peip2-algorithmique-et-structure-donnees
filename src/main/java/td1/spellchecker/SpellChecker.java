@@ -9,9 +9,9 @@ package td1.spellchecker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.StringTokenizer;
 
+import td1.SearchAlgorithms;
 import td1.genericarray.*;
 
 /**
@@ -21,19 +21,17 @@ public class SpellChecker {
 
     // Generic array generated from the table
     private final TableauGenerique<String> dictionaryTable;
-    private final String searchAlgorithm;
+    private SearchAlgorithms searchAlgorithm;
 
-    public SpellChecker(String filePath, String searchAlgorithm) {
+    public SpellChecker(String filePath, SearchAlgorithms searchAlgorithm) {
         DictionaryReader ld = new DictionaryReader(filePath);
         String[] dictionary = ld.getDictionaryList();
         this.dictionaryTable = new TableauGenerique<>(dictionary);
+        this.searchAlgorithm = searchAlgorithm;
+    }
 
-        List<String> ALGORITHM_LIST = Arrays.asList("linear", "binary");
-        if (ALGORITHM_LIST.contains(searchAlgorithm)) {
-            this.searchAlgorithm = searchAlgorithm;
-        } else {
-            this.searchAlgorithm = "linear"; // Default value
-        }
+    public void setSearchAlgorithm(SearchAlgorithms searchAlgorithmToUse) {
+        this.searchAlgorithm = searchAlgorithmToUse;
     }
 
     /**
@@ -46,9 +44,9 @@ public class SpellChecker {
     boolean wordIsCorrect(String word) {
         switch (searchAlgorithm) {
             default:
-            case "linear":
+            case BINARY:
                 return dictionaryTable.linearSearch(word) != -1;
-            case "binary":
+            case LINEAR:
                 return dictionaryTable.binarySearch(word) != -1;
         }
     }
@@ -94,7 +92,7 @@ public class SpellChecker {
     }
 
     // renvoie toutes les corrections possibles pour un mot
-    public ArrayList<String> corrections(String word) {
+    public ArrayList<String> correctUsingAllMethods(String word) {
         ArrayList<String> possibleCorrections = new ArrayList<>();
         // addAll ajoute tous les éléments d'une ArrayList dans une autre
         possibleCorrections.addAll(correctByRemoving(word));
@@ -115,11 +113,12 @@ public class SpellChecker {
      */
     public void displayCorrections(String sentence) {
         String[] wordArray = sentenceToTable(sentence);
+
         for (String word : wordArray) {
             if (wordIsCorrect(word))
                 System.out.println(word + " - OK");
             else {
-                System.out.println("Possible corrections for '" + word + "' : " + corrections(word));
+                System.out.println("Possible corrections for '" + word + "' : " + correctUsingAllMethods(word));
             }
         }
     }

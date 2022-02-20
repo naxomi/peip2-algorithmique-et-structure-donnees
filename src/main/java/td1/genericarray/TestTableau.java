@@ -10,7 +10,7 @@ package td1.genericarray;
 public class TestTableau {
 
     public static void main(String[] s) {
-        /*Integer[] os = {33, 5, 8, 16, 41, 8};
+        Integer[] os = {33, 5, 8, 16, 41, 8};
         TableauGenerique<Integer> t = new TableauGenerique<>(os);
         System.out.println(t);
         System.out.println(t.linearSearch(8));
@@ -33,7 +33,7 @@ public class TestTableau {
         System.out.println(te);
         System.out.println(te.linearSearch(e1));
         System.out.println(te.linearSearch(e2));
-        System.out.println(te.binarySearch(e4));*/
+        System.out.println(te.binarySearch(e4));
 
         Integer[] l = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         TableauGenerique<Integer> t2 = new TableauGenerique<>(l);

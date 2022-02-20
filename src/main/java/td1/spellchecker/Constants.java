@@ -7,6 +7,9 @@
 
 package td1.spellchecker;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Constants {
     public static final String PATH_TO_DICTIONARY = "./resources/td1/dictionary.txt";
     public static final char[] ALPHABET = "abcdefghijklmnopqrstuvwxyz".toCharArray();

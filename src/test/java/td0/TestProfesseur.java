@@ -7,8 +7,8 @@
 
 package td0;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestProfesseur {
     @Test
@@ -18,6 +18,6 @@ public class TestProfesseur {
         String actualDescription = actualProfesseur.toString();
 
         String expectedDescription = "Anjou Raphaël, labo I3S, service prévu 100h";
-        Assert.assertEquals(actualDescription, expectedDescription);
+        assertEquals(actualDescription, expectedDescription);
     }
 }

@@ -7,37 +7,96 @@
 
 package td1.spellchecker;
 
-import org.junit.Test;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
+import td1.SearchAlgorithms;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("SpellChecker tests")
 public class SpellCheckerTest {
 
-    SpellChecker spellCheckerLinear = new SpellChecker(Constants.PATH_TO_DICTIONARY, "linear");
+    public static Stream<Arguments> searchAlgorithmNameProvider() {
+        List<Arguments> algorithmNameList = new ArrayList<>();
+        for (SearchAlgorithms searchAlgorithmName : SearchAlgorithms.values()) {
+            algorithmNameList.add(Arguments.of(searchAlgorithmName));
+        }
 
-    @Test
-    @DisplayName("test test test")
-    public void testMethod() {
-        assertEquals(1, 1);
+        return algorithmNameList.stream();
     }
 
     @Nested
     @DisplayName("when word is corrected")
     class WordIsCorrected {
 
-        @Test
-        @DisplayName("by substituting one letter")
-        public void bySubstitutingOneLetter() {
-            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("bard", "card", "dard", "fard", "gard",
-                    "hard", "lard", "nard", "pard", "sard", "ward", "yard", "wird", "word", "wafd", "wand", "warb",
-                    "ware", "warf", "wark", "warl", "warm", "warn", "warp", "wars", "wart", "wary"));
+        SpellChecker spellChecker = new SpellChecker(Constants.PATH_TO_DICTIONARY, SearchAlgorithms.LINEAR);
 
-            assertEquals(expectedResult, spellCheckerLinear.correctBySubstituting("ward"));
+        @ParameterizedTest(name = "[{index}] Algorithm used : {0}")
+        @MethodSource("td1.spellchecker.SpellCheckerTest#searchAlgorithmNameProvider")
+        @DisplayName("by substituting one letter")
+        public void bySubstitutingOneLetter(SearchAlgorithms searchAlgorithmToUse) {
+            spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
+
+            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("bard", "card", "dard", "eard", "fard",
+                    "gard", "hard", "lard", "nard", "pard", "sard", "ward", "yard", "word", "wafd", "wald", "wand",
+                    "ware", "wark", "warm", "warn", "warp", "wars", "wart", "wary"));
+
+            assertEquals(expectedResult, spellChecker.correctBySubstituting("ward"));
+        }
+
+        @ParameterizedTest(name = "[{index}] Algorithm used : {0}")
+        @MethodSource("td1.spellchecker.SpellCheckerTest#searchAlgorithmNameProvider")
+        @DisplayName("by removing one letter")
+        public void byRemovingOneLetter(SearchAlgorithms searchAlgorithmToUse) {
+            spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
+
+            ArrayList<String> expectedResult = new ArrayList<>((Arrays.asList("hi", "ti")));
+
+            assertEquals(expectedResult, spellChecker.correctByRemoving("thi"));
+        }
+
+        @ParameterizedTest(name = "[{index}] Algorithm used : {0}")
+        @MethodSource("td1.spellchecker.SpellCheckerTest#searchAlgorithmNameProvider")
+        @DisplayName("by adding one letter")
+        public void byAddingOneLetter(SearchAlgorithms searchAlgorithmToUse) {
+            spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
+
+            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("thae", "hade", "hake", "hale", "hame",
+                    "hare", "hate", "have", "haze"));
+
+            assertEquals(expectedResult, spellChecker.correctByAdding("hae"));
+        }
+
+        @ParameterizedTest(name = "[{index}] Algorithm used : {0}")
+        @MethodSource("td1.spellchecker.SpellCheckerTest#searchAlgorithmNameProvider")
+        @DisplayName("by swapping two adjacent letters")
+        public void bySwappingTwoAdjacentLetters(SearchAlgorithms searchAlgorithmToUse) {
+            spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
+
+            ArrayList<String> expectedResult = new ArrayList<>(Collections.singletonList("have"));
+
+            assertEquals(expectedResult, spellChecker.correctBySwapping("hvae"));
+        }
+
+        @ParameterizedTest(name = "[{index}] Algorithm used : {0}")
+        @MethodSource("td1.spellchecker.SpellCheckerTest#searchAlgorithmNameProvider")
+        @DisplayName("by using all methods")
+        public void byUsingAllMethods(SearchAlgorithms searchAlgorithmToUse) {
+            spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
+
+            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("ended", "inked", "inned",
+                    "indew", "index", "minded", "rinded", "sinded", "tinded", "winded", "indeed", "indued"));
+
+            assertEquals(expectedResult, spellChecker.correctUsingAllMethods("inded"));
         }
     }
 }

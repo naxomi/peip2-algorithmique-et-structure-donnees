@@ -7,8 +7,8 @@
 
 package td0;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestGestionServices {
     @Test
@@ -33,7 +33,7 @@ public class TestGestionServices {
                 "Courtois Pierre, promo MAM3, rang 12, moniteur, service prévu 56h, en sous service de 8h\n" +
                 "France Marie, promo SI3, rang 1, moniteur, service prévu 68h, dépasse son service de 4h\n";
 
-        Assert.assertEquals(actualDescription, expectedDescription);
+        assertEquals(actualDescription, expectedDescription);
     }
 
 }

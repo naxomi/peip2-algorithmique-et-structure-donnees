@@ -7,11 +7,13 @@
 
 package td1.spellchecker;
 
+import td1.SearchAlgorithms;
+
 public class TestCorrecteur {
 
     public static void main(String[] s) {
         // créer le correcteur
-        SpellChecker co = new SpellChecker(Constants.PATH_TO_DICTIONARY, "linear");
+        SpellChecker co = new SpellChecker(Constants.PATH_TO_DICTIONARY, SearchAlgorithms.LINEAR);
 
         String word = "hello";
 
