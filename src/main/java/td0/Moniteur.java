@@ -7,11 +7,12 @@
 
 package td0;
 
-public class Moniteur extends ChargeEnseignement {
+public class Moniteur implements ChargeEnseignement {
     protected final Etudiant student;
+    private final Integer hours_planned;
 
-    public Moniteur(Etudiant student, Integer hours_planned) {
-        super(hours_planned);
+    public Moniteur(Etudiant student, Integer hoursPlanned) {
+        this.hours_planned = hoursPlanned;
         this.student = student;
     }
 
@@ -19,7 +20,12 @@ public class Moniteur extends ChargeEnseignement {
         return student;
     }
 
-    public Integer getHoursQuota() {
+    @Override
+    public int getHoursPlanned() {
+        return this.hours_planned;
+    }
+
+    public int getHoursQuota() {
         return Constants.MONITEUR_HOURS_QUOTA;
     }
 

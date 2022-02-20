@@ -19,13 +19,14 @@ public class GestionServices {
     }
 
     private String calculateDeltaHoursQuota(ChargeEnseignement chargeEnseignement) {
-        int delta_hours = chargeEnseignement.getHoursQuota() - chargeEnseignement.hours_planned;
+        int deltaHours = chargeEnseignement.getHoursQuota() - chargeEnseignement.getHoursPlanned();
 
-        if (delta_hours > 0) {
-            return "en sous service de " + Math.abs(delta_hours) + "h";
-        }
-        else {
-            return "dépasse son service de " + Math.abs(delta_hours) + "h";
+        if (deltaHours > 0) {
+            return "en sous service de " + Math.abs(deltaHours) + "h";
+        } else if (deltaHours < 0) {
+            return "dépasse son service de " + Math.abs(deltaHours) + "h";
+        } else {
+            return "respecte son service";
         }
     }
 
@@ -34,11 +35,11 @@ public class GestionServices {
     }
 
     public Integer calculateHoursToPay() {
-        int total_hours = 0;
-        for (ChargeEnseignement i: chargeEnseignementList) {
-            total_hours += i.getHoursPlanned();
+        int totalHours = 0;
+        for (ChargeEnseignement i : chargeEnseignementList) {
+            totalHours += i.getHoursPlanned();
         }
-        return total_hours;
+        return totalHours;
     }
 
     @Override
@@ -48,8 +49,11 @@ public class GestionServices {
         description.append("Services à ").append(this.name).append("\n");
         description.append("Total d'heures à payer ").append(calculateHoursToPay()).append("h\n");
 
-        for (ChargeEnseignement i: chargeEnseignementList) {
-            description.append(i.toString()).append(", ").append(calculateDeltaHoursQuota(i)).append("\n");
+        for (ChargeEnseignement chargeEnseignement : chargeEnseignementList) {
+            description.append(chargeEnseignement.toString())
+                    .append(", ")
+                    .append(calculateDeltaHoursQuota(chargeEnseignement))
+                    .append("\n");
         }
 
         return description.toString();

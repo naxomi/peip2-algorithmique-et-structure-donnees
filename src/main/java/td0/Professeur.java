@@ -7,36 +7,32 @@
 
 package td0;
 
-public class Professeur extends ChargeEnseignement {
-    protected final String surname;
-    protected final String name;
+public class Professeur extends PersonnelUniversite implements ChargeEnseignement {
     protected final String laboratory;
+    private final Integer hours_planned;
 
-    public Professeur(String surname, String name, String laboratory, Integer hours_planned) {
-        super(hours_planned);
-        this.surname = surname;
-        this.name = name;
+    public Professeur(String surname, String name, String laboratory, Integer hoursPlanned) {
+        super(surname, name);
+        this.hours_planned = hoursPlanned;
         this.laboratory = laboratory;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getLaboratory() {
         return laboratory;
     }
 
-    public Integer getHoursQuota() {
+    @Override
+    public int getHoursPlanned() {
+        return this.hours_planned;
+    }
+
+    @Override
+    public int getHoursQuota() {
         return Constants.PROFESSEUR_HOURS_QUOTA;
     }
 
     @Override
     public String toString() {
-        return this.surname + " " + this.name + ", labo " + this.laboratory + ", service prévu " + this.hours_planned + "h";
+        return super.toString() + ", labo " + this.laboratory + ", service prévu " + this.hours_planned + "h";
     }
 }
