@@ -46,9 +46,9 @@ public class SpellCheckerTest {
         public void bySubstitutingOneLetter(SearchAlgorithms searchAlgorithmToUse) {
             spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
 
-            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("bard", "card", "dard", "eard", "fard",
-                    "gard", "hard", "lard", "nard", "pard", "sard", "ward", "yard", "word", "wafd", "wald", "wand",
-                    "ware", "wark", "warm", "warn", "warp", "wars", "wart", "wary"));
+            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("bard", "card", "dard", "fard",
+                    "gard", "hard", "lard", "nard", "pard", "sard", "ward", "yard", "wird", "word", "wafd", "wand",
+                    "warb", "ware", "warf", "wark", "warl", "warm", "warn", "warp", "wars", "wart", "wary"));
 
             assertEquals(expectedResult, spellChecker.correctBySubstituting("ward"));
         }
@@ -59,7 +59,7 @@ public class SpellCheckerTest {
         public void byRemovingOneLetter(SearchAlgorithms searchAlgorithmToUse) {
             spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
 
-            ArrayList<String> expectedResult = new ArrayList<>((Arrays.asList("hi", "ti")));
+            ArrayList<String> expectedResult = new ArrayList<>((Arrays.asList("hi", "ti", "th")));
 
             assertEquals(expectedResult, spellChecker.correctByRemoving("thi"));
         }
@@ -70,8 +70,8 @@ public class SpellCheckerTest {
         public void byAddingOneLetter(SearchAlgorithms searchAlgorithmToUse) {
             spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
 
-            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("thae", "hade", "hake", "hale", "hame",
-                    "hare", "hate", "have", "haze"));
+            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("thae", "habe", "hade", "haje", "hake", "hale", "hame",
+                    "hare", "hate", "have", "haye", "haze"));
 
             assertEquals(expectedResult, spellChecker.correctByAdding("hae"));
         }
@@ -93,8 +93,8 @@ public class SpellCheckerTest {
         public void byUsingAllMethods(SearchAlgorithms searchAlgorithmToUse) {
             spellChecker.setSearchAlgorithm(searchAlgorithmToUse);
 
-            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("ended", "inked", "inned",
-                    "indew", "index", "minded", "rinded", "sinded", "tinded", "winded", "indeed", "indued"));
+            ArrayList<String> expectedResult = new ArrayList<>(Arrays.asList("inde", "ended", "inked", "inned",
+                    "indef", "indew", "index", "nided", "minded", "rinded", "winded", "indeed", "indued"));
 
             assertEquals(expectedResult, spellChecker.correctUsingAllMethods("inded"));
         }
