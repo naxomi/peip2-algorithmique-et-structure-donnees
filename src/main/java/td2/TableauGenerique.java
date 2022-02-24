@@ -1,17 +1,7 @@
-/*
- * Copyright (c) 2022. Raphaël Anjou
- * Parts of this code might have been written by "Polytech Nice Sophia", member of "Université Côte d'Azur",
- * as content for their courses.
- * Source files for the exercises can be found in the /resources directory.
- */
-
-package td1.genericarray;
+package td2;
 
 import java.util.Arrays;
 
-/**
- * @param <K> TODO class Tableau Generique
- */
 public class TableauGenerique<K extends Comparable<K>> {
     K[] genericArray;
 
@@ -83,5 +73,21 @@ public class TableauGenerique<K extends Comparable<K>> {
             }
         }
         return -1;
+    }
+
+    // Pour le TD validité
+    public void triSelection() {
+        for (int i=0; i<this.genericArray.length;i++){
+            //P1 : genericArray[0...i-1] est trié
+            int indiceMin = i;
+            for (int j = i+1; j < this.genericArray.length;j++)
+                // P2 : genericArray[indiceMin] <= genericArray[k] pour tout i <= k < j
+                if (this.genericArray[indiceMin].compareTo(this.genericArray[j])>0) {
+                    indiceMin = j;
+                }
+            K aux = this.genericArray[i];
+            this.genericArray[i]= this.genericArray[indiceMin];
+            this.genericArray[indiceMin] = aux;
+        }
     }
 }

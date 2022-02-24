@@ -22,10 +22,10 @@ public class ValidityAndComplexity {
             // P1: propriété sur m, i, et res pour assurer la validité
             // si n = res.length(), res[i:j] avec i<=j représente les lettres de i à j de res,
             // et res[[j:i]] avec j>i représente les lettres de j à i lues de droite à gauche
-            // alors ...........................
+            // alors res[0:i] contient m[0:i] à l'envers
             res = m.charAt(i) + res;
             // P2: propriété sur i pour assurer la terminaison
-            // ..................................
+            // i part de 0 et croit de 1 à chaque étape
             i++;
         }
         return res;
@@ -69,7 +69,7 @@ public class ValidityAndComplexity {
     }
 
     public static void main(String[] s) {
-        ValiditeComplexite vc = new ValiditeComplexite();
+        ValidityAndComplexity vc = new ValidityAndComplexity();
 
         System.out.println(vc.mystere("Bonjour"));
 
