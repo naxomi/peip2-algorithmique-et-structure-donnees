@@ -7,6 +7,8 @@
 
 package td2;
 
+import td1.genericarray.TableauGenerique;
+
 public class ValidityAndComplexity {
     /***
      * classe pour les exercices sur la complexité / validité

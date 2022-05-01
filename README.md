@@ -13,6 +13,12 @@
 
 ## Lessons and exercises
 
-- [02/02/2022 - Quiz OOP](resources/01-quiz-OOP.pdf)
-- [02/02/2022 - Quiz algorithmic](resources/02-quiz-algorithmic.pdf)
-- [07/02/2022 - Lesson introduction](resources/03-lesson-introduction.pdf)
+- [Lesson Introduction](resources/td0/lesson-introduction.pdf)
+- [Quiz Algorithmic](resources/td0/quiz-algorithmic.pdf)
+- [Quiz OOP](resources/td0/quiz-OOP.pdf)
+- [TD0 Subject : Interface and Abstract Class](resources/td0/interface-and-abstract-class-subject.pdf)
+- [TD1 Subject : Generic Array](resources/td1/generic-array-subject.pdf)
+- [TD1 Subject : Spell Checker](resources/td1/spell-checker-subject.pdf)
+- [TD2 Subject : Validity and Complexity](resources/td2/validity-and-complexity-subject.pdf)
+- [TD3 Subject : Recursion](resources/td3/recursion-subject.pdf);
+- [TD3 Subject : Sudoku Solver](resources/td3/sudoku-subject.pdf)

@@ -10,6 +10,7 @@ package td1.genericarray;
 public class TestTableau {
 
     public static void main(String[] s) {
+        
         Integer[] os = {33, 5, 8, 16, 41, 8};
         TableauGenerique<Integer> t = new TableauGenerique<>(os);
         System.out.println(t);
